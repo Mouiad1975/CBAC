@@ -1,0 +1,16 @@
+@prefix :        <http://www.semanticweb.org/Last-Context/app#> .
+@prefix app:     <http://www.semanticweb.org/Last-Context/app#> .
+@prefix iot-lite:  <http://purl.oclc.org/NET/UNIS/fiware/iot-lite#> .
+@prefix owl:     <http://www.w3.org/2002/07/owl#> .
+@prefix ns:      <http://creativecommons.org/ns#> .
+@prefix xsd:     <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs:    <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix ctx-lite:  <http://www.semanticweb.org/Last-Context/ctx-lite#> .
+@prefix ssn:     <http://purl.oclc.org/NET/ssnx/ssn#> .
+@prefix cbac:    <http://www.semanticweb.org/Last-Context/cbac#> .
+@prefix rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix terms:   <http://purl.org/dc/terms/> .
+@prefix wgs84_pos:  <http://www.w3.org/2003/01/geo/wgs84_pos#> .
+@prefix dc:      <http://purl.org/dc/elements/1.1/> .
+
+[Permit-Rule2: (?r rdf:type cbac:Request) (?r ctx-lite:hasType app:access) (?r cbac:hasSubject ?s) (?s ctx-lite:hasID "MSS56006"^^xsd:string) (?s rdf:type app:OnDuty) (?r cbac:hasResource ?rs) (?rs ctx-lite:hasOwner ?ow) (?ow ctx-lite:hasID "PAT29013"^^xsd:string) (?ow rdf:type app:InEmergency) (?r cbac:hasDecision ?d) -> (?d cbac:hasImpact cbac:Permit)]
