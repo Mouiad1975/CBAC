@@ -1,0 +1,20 @@
+PREFIX :        <http://www.semanticweb.org/Last-Context/app#> 
+PREFIX app:     <http://www.semanticweb.org/Last-Context/app#> 
+PREFIX iot-lite: <http://purl.oclc.org/NET/UNIS/fiware/iot-lite#> 
+PREFIX owl:     <http://www.w3.org/2002/07/owl#> 
+PREFIX ns:      <http://creativecommons.org/ns#> 
+PREFIX xsd:     <http://www.w3.org/2001/XMLSchema#> 
+PREFIX rdfs:    <http://www.w3.org/2000/01/rdf-schema#> 
+PREFIX ctx-lite:  <http://www.semanticweb.org/Last-Context/ctx-lite#> 
+PREFIX ssn:     <http://purl.oclc.org/NET/ssnx/ssn#> 
+PREFIX cbac: <http://www.semanticweb.org/Last-Context/cbac#> 
+PREFIX rdf:     <http://www.w3.org/1999/02/22-rdf-syntax-ns#> 
+PREFIX terms:   <http://purl.org/dc/terms/> 
+PREFIX wgs84_pos:  <http://www.w3.org/2003/01/geo/wgs84_pos#> 
+PREFIX dc:      <http://purl.org/dc/elements/1.1/> 
+
+
+SELECT DISTINCT ?c
+	WHERE {
+		?c rdf:type app:OnDuty.
+	      }
