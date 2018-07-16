@@ -1,0 +1,551 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://www.semanticweb.org/Last-Context/app#"
+     xml:base="http://www.semanticweb.org/Last-Context/app"
+     xmlns:app="http://www.semanticweb.org/Last-Context/app#"
+     xmlns:iot-lite="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:ns="http://creativecommons.org/ns#"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+     xmlns:ctx-lite="http://www.semanticweb.org/Last-Context/ctx-lite#"
+     xmlns:ssn="http://purl.oclc.org/NET/ssnx/ssn#"
+     xmlns:cbac="http://www.semanticweb.org/Last-Context/cbac#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:terms="http://purl.org/dc/terms/"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:wgs84_pos="http://www.w3.org/2003/01/geo/wgs84_pos#"
+     xmlns:dc="http://purl.org/dc/elements/1.1/">
+    <owl:Ontology rdf:about="http://www.semanticweb.org/Last-Context/app">
+        <owl:imports rdf:resource="http://purl.oclc.org/NET/ssnx/ssn"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite"/>
+        <owl:imports rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#"/>
+        <owl:imports rdf:resource="http://www.semanticweb.org/Last-Context/cbac"/>
+    </owl:Ontology>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#Car -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#Car">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#CarSeat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#CarSeat">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/UNIS/fiware/iot-lite#Entity"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#InEmergency -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#InEmergency">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/Last-Context/ctx-lite#Person"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#owns"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Device"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasDevice"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice"/>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#madeObservation"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Class>
+                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Observation"/>
+                                                                    <owl:Class>
+                                                                        <owl:unionOf rdf:parseType="Collection">
+                                                                            <owl:Restriction>
+                                                                                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observationResult"/>
+                                                                                <owl:someValuesFrom>
+                                                                                    <owl:Class>
+                                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                                            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput"/>
+                                                                                            <owl:Restriction>
+                                                                                                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasValue"/>
+                                                                                                <owl:someValuesFrom>
+                                                                                                    <owl:Class>
+                                                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                                                            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+                                                                                                            <owl:Restriction>
+                                                                                                                <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasDataValue"/>
+                                                                                                                <owl:someValuesFrom>
+                                                                                                                    <rdfs:Datatype>
+                                                                                                                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                                                                                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                                                                                            <rdf:Description>
+                                                                                                                                <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">170.0</xsd:minInclusive>
+                                                                                                                            </rdf:Description>
+                                                                                                                        </owl:withRestrictions>
+                                                                                                                    </rdfs:Datatype>
+                                                                                                                </owl:someValuesFrom>
+                                                                                                            </owl:Restriction>
+                                                                                                        </owl:intersectionOf>
+                                                                                                    </owl:Class>
+                                                                                                </owl:someValuesFrom>
+                                                                                            </owl:Restriction>
+                                                                                        </owl:intersectionOf>
+                                                                                    </owl:Class>
+                                                                                </owl:someValuesFrom>
+                                                                            </owl:Restriction>
+                                                                            <owl:Restriction>
+                                                                                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observationResult"/>
+                                                                                <owl:someValuesFrom>
+                                                                                    <owl:Class>
+                                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                                            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput"/>
+                                                                                            <owl:Restriction>
+                                                                                                <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasValue"/>
+                                                                                                <owl:someValuesFrom>
+                                                                                                    <owl:Class>
+                                                                                                        <owl:intersectionOf rdf:parseType="Collection">
+                                                                                                            <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+                                                                                                            <owl:Restriction>
+                                                                                                                <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasDataValue"/>
+                                                                                                                <owl:someValuesFrom>
+                                                                                                                    <rdfs:Datatype>
+                                                                                                                        <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                                                                                                                        <owl:withRestrictions rdf:parseType="Collection">
+                                                                                                                            <rdf:Description>
+                                                                                                                                <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">60.0</xsd:maxInclusive>
+                                                                                                                            </rdf:Description>
+                                                                                                                        </owl:withRestrictions>
+                                                                                                                    </rdfs:Datatype>
+                                                                                                                </owl:someValuesFrom>
+                                                                                                            </owl:Restriction>
+                                                                                                        </owl:intersectionOf>
+                                                                                                    </owl:Class>
+                                                                                                </owl:someValuesFrom>
+                                                                                            </owl:Restriction>
+                                                                                        </owl:intersectionOf>
+                                                                                    </owl:Class>
+                                                                                </owl:someValuesFrom>
+                                                                            </owl:Restriction>
+                                                                        </owl:unionOf>
+                                                                    </owl:Class>
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest"/>
+                                                                        <owl:someValuesFrom rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest"/>
+                                                                    </owl:Restriction>
+                                                                </owl:intersectionOf>
+                                                            </owl:Class>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#Personal"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#MedicalDevice -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#MedicalDevice">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Device"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#OccupancySensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#OccupancySensor">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#OccupiedPassengerSeat -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#OccupiedPassengerSeat">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/Last-Context/app#CarSeat"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasDevice"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:intersectionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice"/>
+                                    <owl:Restriction>
+                                        <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#madeObservation"/>
+                                        <owl:someValuesFrom>
+                                            <owl:Class>
+                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#Observation"/>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#featureOfInterest"/>
+                                                        <owl:someValuesFrom rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest"/>
+                                                    </owl:Restriction>
+                                                    <owl:Restriction>
+                                                        <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#observationResult"/>
+                                                        <owl:someValuesFrom>
+                                                            <owl:Class>
+                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput"/>
+                                                                    <owl:Restriction>
+                                                                        <owl:onProperty rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#hasValue"/>
+                                                                        <owl:someValuesFrom>
+                                                                            <owl:Class>
+                                                                                <owl:intersectionOf rdf:parseType="Collection">
+                                                                                    <rdf:Description rdf:about="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+                                                                                    <owl:Restriction>
+                                                                                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasDataValue"/>
+                                                                                        <owl:someValuesFrom>
+                                                                                            <rdfs:Datatype>
+                                                                                                <owl:onDatatype rdf:resource="http://www.w3.org/2001/XMLSchema#float"/>
+                                                                                                <owl:withRestrictions rdf:parseType="Collection">
+                                                                                                    <rdf:Description>
+                                                                                                        <xsd:minInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">30.0</xsd:minInclusive>
+                                                                                                    </rdf:Description>
+                                                                                                    <rdf:Description>
+                                                                                                        <xsd:maxInclusive rdf:datatype="http://www.w3.org/2001/XMLSchema#float">110.0</xsd:maxInclusive>
+                                                                                                    </rdf:Description>
+                                                                                                </owl:withRestrictions>
+                                                                                            </rdfs:Datatype>
+                                                                                        </owl:someValuesFrom>
+                                                                                    </owl:Restriction>
+                                                                                </owl:intersectionOf>
+                                                                            </owl:Class>
+                                                                        </owl:someValuesFrom>
+                                                                    </owl:Restriction>
+                                                                </owl:intersectionOf>
+                                                            </owl:Class>
+                                                        </owl:someValuesFrom>
+                                                    </owl:Restriction>
+                                                </owl:intersectionOf>
+                                            </owl:Class>
+                                        </owl:someValuesFrom>
+                                    </owl:Restriction>
+                                </owl:intersectionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#Behavioral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#OnDuty -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#OnDuty">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://www.semanticweb.org/Last-Context/cbac#Subject"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasActivity"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#Activity"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasRole"/>
+                        <owl:someValuesFrom rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Role"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasID"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#hasName"/>
+                        <owl:someValuesFrom rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#Behavioral"/>
+    </owl:Class>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#VitalSignSensor -->
+
+    <owl:Class rdf:about="http://www.semanticweb.org/Last-Context/app#VitalSignSensor">
+        <rdfs:subClassOf rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#SensingDevice"/>
+    </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Individuals
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#ACCELRD100 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#ACCELRD100">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/app#VitalSignSensor"/>
+        <ssn:madeObservation rdf:resource="http://www.semanticweb.org/Last-Context/app#o2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#AccelerometerD100 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#AccelerometerD100">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/app#MedicalDevice"/>
+        <ctx-lite:hasDevice rdf:resource="http://www.semanticweb.org/Last-Context/app#ACCELRD100"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#BloodPressure -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#BloodPressure">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#Buick-SmartCar-2017 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#Buick-SmartCar-2017">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Platform"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#BuickPassengerSeat -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#BuickPassengerSeat">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/app#CarSeat"/>
+        <ssn:onPlatform rdf:resource="http://www.semanticweb.org/Last-Context/app#Buick-SmartCar-2017"/>
+        <ctx-lite:hasDevice rdf:resource="http://www.semanticweb.org/Last-Context/app#CNDingD100"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#CNDingD100 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#CNDingD100">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/app#OccupancySensor"/>
+        <ssn:madeObservation rdf:resource="http://www.semanticweb.org/Last-Context/app#o1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#MarthaRecords -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#MarthaRecords">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Resource"/>
+        <ctx-lite:hasOwner rdf:resource="http://www.semanticweb.org/Last-Context/app#p1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#access -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#access">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#RequestType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#bodyweight -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#bodyweight">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#FeatureOfInterest"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#d1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#d1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Decision"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#o1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#o1">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Observation"/>
+        <ssn:featureOfInterest rdf:resource="http://www.semanticweb.org/Last-Context/app#bodyweight"/>
+        <ssn:observationResult rdf:resource="http://www.semanticweb.org/Last-Context/app#so1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#o2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#o2">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Observation"/>
+        <ssn:featureOfInterest rdf:resource="http://www.semanticweb.org/Last-Context/app#BloodPressure"/>
+        <ssn:observationResult rdf:resource="http://www.semanticweb.org/Last-Context/app#so2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#ov1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#ov1">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+        <ctx-lite:hasDataValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">76.0</ctx-lite:hasDataValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#ov2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#ov2">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#ObservationValue"/>
+        <ctx-lite:hasDataValue rdf:datatype="http://www.w3.org/2001/XMLSchema#float">50.0</ctx-lite:hasDataValue>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#p1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#p1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#Person"/>
+        <ctx-lite:owns rdf:resource="http://www.semanticweb.org/Last-Context/app#AccelerometerD100"/>
+        <ctx-lite:hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PAT29013</ctx-lite:hasID>
+        <ctx-lite:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Martha</ctx-lite:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#paramedic -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#paramedic">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#r1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#r1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Request"/>
+        <cbac:hasDecision rdf:resource="http://www.semanticweb.org/Last-Context/app#d1"/>
+        <cbac:hasResource rdf:resource="http://www.semanticweb.org/Last-Context/app#MarthaRecords"/>
+        <cbac:hasSubject rdf:resource="http://www.semanticweb.org/Last-Context/app#s1"/>
+        <ctx-lite:hasType rdf:resource="http://www.semanticweb.org/Last-Context/app#access"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#r2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#r2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Request"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#read -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#read">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#RequestType"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#role2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#role2">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Role"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#s1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#s1">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#Subject"/>
+        <ctx-lite:hasActivity rdf:resource="http://www.semanticweb.org/Last-Context/app#working"/>
+        <ctx-lite:hasRole rdf:resource="http://www.semanticweb.org/Last-Context/app#paramedic"/>
+        <ctx-lite:hasID rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MSS56006</ctx-lite:hasID>
+        <ctx-lite:hasName rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Joe</ctx-lite:hasName>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#so1 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#so1">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput"/>
+        <ssn:hasValue rdf:resource="http://www.semanticweb.org/Last-Context/app#ov1"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#so2 -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#so2">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#SensorOutput"/>
+        <ssn:hasValue rdf:resource="http://www.semanticweb.org/Last-Context/app#ov2"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#weight -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#weight">
+        <rdf:type rdf:resource="http://purl.oclc.org/NET/ssnx/ssn#Property"/>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#working -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#working">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/ctx-lite#Activity"/>
+        <ctx-lite:hasEndTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-23T08:01:15</ctx-lite:hasEndTime>
+        <ctx-lite:hasStartTime rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2017-09-23T01:01:15</ctx-lite:hasStartTime>
+    </owl:NamedIndividual>
+    
+
+
+    <!-- http://www.semanticweb.org/Last-Context/app#write -->
+
+    <owl:NamedIndividual rdf:about="http://www.semanticweb.org/Last-Context/app#write">
+        <rdf:type rdf:resource="http://www.semanticweb.org/Last-Context/cbac#RequestType"/>
+    </owl:NamedIndividual>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.2.6.20160910-2108) https://github.com/owlcs/owlapi -->
+
