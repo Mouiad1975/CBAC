@@ -1,0 +1,1 @@
+{"Collections":[{"sheetName":"Sheet1","startColumn":"N","endColumn":"N","startRow":"2","endRow":"+","comment":"","rule":"Individual: @**\nTypes: Person\nFacts: hasName @C* (xsd:string),\n           hasID @D* (xsd:string)","active":true}]}
